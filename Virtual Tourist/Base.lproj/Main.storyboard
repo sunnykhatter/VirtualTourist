@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TKh-SG-sWn">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Virtual Tourist-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,83 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yz0-Cz-CR4">
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QTT-rj-HDM">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="L3J-H7-U7A"/>
+                                        </constraints>
+                                    </mapView>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="uu1-vu-Iv9">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to edit Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERh-yD-d2L">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="ERh-yD-d2L" firstAttribute="top" secondItem="uu1-vu-Iv9" secondAttribute="top" constant="19" id="MGT-8f-AYL"/>
+                                            <constraint firstItem="ERh-yD-d2L" firstAttribute="centerY" secondItem="uu1-vu-Iv9" secondAttribute="centerY" id="Z3h-5O-38T"/>
+                                            <constraint firstAttribute="width" constant="375" id="phL-8r-063"/>
+                                            <constraint firstItem="ERh-yD-d2L" firstAttribute="centerX" secondItem="uu1-vu-Iv9" secondAttribute="centerX" id="rAO-mI-Uc7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="uu1-vu-Iv9" firstAttribute="leading" secondItem="yz0-Cz-CR4" secondAttribute="leading" id="2M1-Vo-qAh"/>
+                                    <constraint firstAttribute="bottom" secondItem="uu1-vu-Iv9" secondAttribute="bottom" id="Wn2-So-Xha"/>
+                                    <constraint firstItem="uu1-vu-Iv9" firstAttribute="top" secondItem="QTT-rj-HDM" secondAttribute="bottom" id="aSU-K7-dBb"/>
+                                    <constraint firstAttribute="trailing" secondItem="uu1-vu-Iv9" secondAttribute="trailing" id="hW8-X9-ory"/>
+                                    <constraint firstAttribute="trailing" secondItem="QTT-rj-HDM" secondAttribute="trailing" id="vR7-fs-HTm"/>
+                                    <constraint firstItem="QTT-rj-HDM" firstAttribute="leading" secondItem="yz0-Cz-CR4" secondAttribute="leading" id="w0b-55-5BR"/>
+                                    <constraint firstItem="QTT-rj-HDM" firstAttribute="top" secondItem="yz0-Cz-CR4" secondAttribute="top" id="wDU-sR-nLY"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yz0-Cz-CR4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MWr-ol-9iP"/>
+                            <constraint firstItem="yz0-Cz-CR4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Xu9-aG-8Bb"/>
+                            <constraint firstAttribute="trailing" secondItem="yz0-Cz-CR4" secondAttribute="trailing" id="g4F-zk-OA3"/>
+                            <constraint firstItem="yz0-Cz-CR4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nfs-eM-rOB"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Virtual Tourist" id="P8s-x4-2FQ">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="0TT-bt-iNK">
+                            <connections>
+                                <action selector="edit:" destination="BYZ-38-t0r" id="aJo-aY-HBn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="stackView" destination="yz0-Cz-CR4" id="f20-ef-Gjs"/>
+                        <outlet property="tapPinsToDeleteView" destination="uu1-vu-Iv9" id="Ghr-Xj-2Cw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="944.79999999999995" y="149.77511244377811"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qDy-Jl-8wf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TKh-SG-sWn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wwL-J9-VSH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Zsn-aM-Y0X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fgx-Lv-edF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89" y="150"/>
         </scene>
     </scenes>
 </document>
