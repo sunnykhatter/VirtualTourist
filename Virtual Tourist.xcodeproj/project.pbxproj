@@ -12,6 +12,7 @@
 		AC2576F11DAE830B004575C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2576F01DAE830B004575C6 /* Assets.xcassets */; };
 		AC2576F41DAE830B004575C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2576F21DAE830B004575C6 /* LaunchScreen.storyboard */; };
 		AC2576FC1DAE8895004575C6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2576FB1DAE8895004575C6 /* MapViewController.swift */; };
+		AC2576FE1DAE989D004575C6 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2576FD1DAE989D004575C6 /* PhotoAlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AC2576F31DAE830B004575C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC2576F51DAE830B004575C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC2576FB1DAE8895004575C6 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AC2576FD1DAE989D004575C6 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				AC2576E91DAE830B004575C6 /* AppDelegate.swift */,
 				AC2576FB1DAE8895004575C6 /* MapViewController.swift */,
+				AC2576FD1DAE989D004575C6 /* PhotoAlbumViewController.swift */,
 				AC2576ED1DAE830B004575C6 /* Main.storyboard */,
 				AC2576F01DAE830B004575C6 /* Assets.xcassets */,
 				AC2576F21DAE830B004575C6 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				AC2576EA1DAE830B004575C6 /* AppDelegate.swift in Sources */,
 				AC2576FC1DAE8895004575C6 /* MapViewController.swift in Sources */,
+				AC2576FE1DAE989D004575C6 /* PhotoAlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,15 +11,33 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate  {
     
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var tapPinsToDeleteView: UIView!
+    @IBOutlet weak var topRightButton: UIBarButtonItem!
+    
+ 
+
+    
     var editTapped = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tapPinsToDeleteView.hidden = true
+        mapView.delegate = self;
 
-        // Do any additional setup after loading the view.
+        
+        
+        var uilgr = UILongPressGestureRecognizer(target: self, action: "action:")
+        uilgr.minimumPressDuration = 1.3
+        
+        mapView.addGestureRecognizer(uilgr)
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.mapView.delegate = self;
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,13 +47,14 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     
     @IBAction func edit(sender: AnyObject) {
         if editTapped {
-            UIView.animateWithDuration(0.2) {
+            UIView.animateWithDuration(0.15) {
                 let firstView = self.stackView.arrangedSubviews[1]
                 firstView.hidden = false
                 self.editTapped = false
             }
+            
         } else {
-            UIView.animateWithDuration(0.2) {
+            UIView.animateWithDuration(0.15) {
                 let firstView = self.stackView.arrangedSubviews[1]
                 firstView.hidden = true
                 self.editTapped = true
@@ -49,12 +68,30 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         let buttonType = UIButtonType.InfoDark
         let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         
-        pinView.canShowCallout = true
+        
+        pinView.canShowCallout = false
         pinView.rightCalloutAccessoryView = UIButton(type: buttonType)
         
         return pinView
     }
-
+    
+    func action(gestureRecognizer:UIGestureRecognizer){
+        var touchPoint = gestureRecognizer.locationInView(mapView)
+        var newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = newCoordinates
+        annotation.title = " " // So it is registered, with didSelectAnnotatioView
+        mapView.addAnnotation(annotation)
+    }
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!)
+    {
+        //Pin clicked, do your stuff here
+        performSegueWithIdentifier("toPhotoAlbumView", sender: self)
+        
+    }
+    
 
     /*
     // MARK: - Navigation
