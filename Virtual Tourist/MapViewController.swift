@@ -16,6 +16,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     @IBOutlet weak var tapPinsToDeleteView: UIView!
     @IBOutlet weak var topRightButton: UIBarButtonItem!
     
+    var location = MKPointAnnotation()
  
 
     
@@ -29,7 +30,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         
         
         var uilgr = UILongPressGestureRecognizer(target: self, action: "action:")
-        uilgr.minimumPressDuration = 1.3
+        uilgr.minimumPressDuration = 2.0
         
         mapView.addGestureRecognizer(uilgr)
 
@@ -76,31 +77,45 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     }
     
     func action(gestureRecognizer:UIGestureRecognizer){
-        var touchPoint = gestureRecognizer.locationInView(mapView)
-        var newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = newCoordinates
-        annotation.title = " " // So it is registered, with didSelectAnnotatioView
-        mapView.addAnnotation(annotation)
+        
+        if (gestureRecognizer.state == UIGestureRecognizerState.Began) {
+            //Do Whatever You want on End of Gesture
+            let touchPoint = gestureRecognizer.locationInView(mapView)
+            let newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = newCoordinates
+            annotation.title = " " // So it is registered, with didSelectAnnotationView
+            
+            location.coordinate = newCoordinates
+            location.title = " "
+            
+            mapView.addAnnotation(annotation)
+            mapView.deselectAnnotation(annotation, animated: false)
+
+            performSegueWithIdentifier("toPhotoAlbumView", sender: self)
+            
+
+        }
+        
+        
     }
     
-    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!)
-    {
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView){
         //Pin clicked, do your stuff here
         performSegueWithIdentifier("toPhotoAlbumView", sender: self)
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier = segue.identifier
+        if identifier == "toPhotoAlbumView" {
+            let viewController:PhotoAlbumViewController = segue.destinationViewController as! PhotoAlbumViewController
+            viewController.annotation = self.location
+        }
+        
     }
-    */
+    
 
 }
