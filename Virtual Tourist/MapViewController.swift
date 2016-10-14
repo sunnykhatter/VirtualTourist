@@ -20,7 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
  
 
     
-    var editTapped = true
+    var editTapped = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,18 +47,18 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     }
     
     @IBAction func edit(sender: AnyObject) {
-        if editTapped {
+        if editTapped == false {
             UIView.animateWithDuration(0.15) {
                 let firstView = self.stackView.arrangedSubviews[1]
                 firstView.hidden = false
-                self.editTapped = false
+                self.editTapped = true
             }
             
         } else {
             UIView.animateWithDuration(0.15) {
                 let firstView = self.stackView.arrangedSubviews[1]
                 firstView.hidden = true
-                self.editTapped = true
+                self.editTapped = false
             }
             
         }
@@ -96,7 +96,6 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
 
             performSegueWithIdentifier("toPhotoAlbumView", sender: self)
             
-
         }
         
         
@@ -104,7 +103,15 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView){
         //Pin clicked, do your stuff here
-        performSegueWithIdentifier("toPhotoAlbumView", sender: self)
+        
+        if editTapped == true {
+            self.mapView.removeAnnotation(view.annotation!)
+        } else {
+            performSegueWithIdentifier("toPhotoAlbumView", sender: self)
+        }
+        
+        
+        
         
     }
     
