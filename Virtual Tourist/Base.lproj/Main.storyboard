@@ -113,20 +113,36 @@
                                                     <constraint firstAttribute="height" constant="393" id="gr7-Ys-BK0"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZHj-eD-zJ9">
-                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="itemSize" width="167" height="142"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="10" minY="8" maxX="10" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="bOE-Jf-lZy">
-                                                        <rect key="frame" x="10" y="8" width="50" height="50"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="bOE-Jf-lZy" customClass="PhotoCollectionViewCell" customModule="Virtual_Tourist" customModuleProvider="target">
+                                                        <rect key="frame" x="10" y="8" width="167" height="142"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="167" height="142"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dor-nA-E7c"/>
+                                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rQ8-LS-XfH"/>
+                                                            </subviews>
                                                         </view>
                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Dor-nA-E7c" secondAttribute="bottom" id="Eos-Id-0q5"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Dor-nA-E7c" secondAttribute="trailing" id="EwH-G8-bS7"/>
+                                                            <constraint firstItem="Dor-nA-E7c" firstAttribute="top" secondItem="bOE-Jf-lZy" secondAttribute="top" id="QqO-Gh-nJA"/>
+                                                            <constraint firstItem="rQ8-LS-XfH" firstAttribute="centerX" secondItem="Dor-nA-E7c" secondAttribute="centerX" id="d1p-9H-TAk"/>
+                                                            <constraint firstItem="Dor-nA-E7c" firstAttribute="leading" secondItem="bOE-Jf-lZy" secondAttribute="leading" id="d9Z-IG-Tw9"/>
+                                                            <constraint firstItem="rQ8-LS-XfH" firstAttribute="centerY" secondItem="Dor-nA-E7c" secondAttribute="centerY" id="vGM-0r-Dz5"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="activityIndicator" destination="rQ8-LS-XfH" id="OQS-d3-vf7"/>
+                                                            <outlet property="imageView" destination="Dor-nA-E7c" id="lg0-uV-28g"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <connections>

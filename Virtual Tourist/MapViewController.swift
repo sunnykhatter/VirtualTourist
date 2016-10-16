@@ -48,6 +48,8 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     
     @IBAction func edit(sender: AnyObject) {
         if editTapped == false {
+            self.navigationItem.rightBarButtonItem?.title = "Done"
+
             UIView.animateWithDuration(0.15) {
                 let firstView = self.stackView.arrangedSubviews[1]
                 firstView.hidden = false
@@ -55,6 +57,8 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
             }
             
         } else {
+            self.navigationItem.rightBarButtonItem?.title = "Edit"
+            
             UIView.animateWithDuration(0.15) {
                 let firstView = self.stackView.arrangedSubviews[1]
                 firstView.hidden = true
@@ -77,8 +81,6 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     }
     
     func action(gestureRecognizer:UIGestureRecognizer){
-        
-        
         if (gestureRecognizer.state == UIGestureRecognizerState.Began) {
             //Do Whatever You want on End of Gesture
             let touchPoint = gestureRecognizer.locationInView(mapView)
@@ -95,9 +97,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
             mapView.deselectAnnotation(annotation, animated: false)
 
             performSegueWithIdentifier("toPhotoAlbumView", sender: self)
-            
         }
-        
         
     }
     
@@ -106,6 +106,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         
         if editTapped == true {
             self.mapView.removeAnnotation(view.annotation!)
+            print("Pin tapped")
         } else {
             performSegueWithIdentifier("toPhotoAlbumView", sender: self)
         }

@@ -16,7 +16,7 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate, UICollectio
     @IBOutlet weak var collectionView: UICollectionView!
     
     var annotation = MKPointAnnotation()
-    
+    // API Key: ad32e3d83fe79e4030a5d3235184fb97
     
         
     override func viewDidLoad() {
